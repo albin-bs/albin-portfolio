@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Albin Binu Sebastian — Frontend Engineer</title>
+<meta name="description" content="Portfolio of Albin Binu Sebastian, a frontend software engineer specializing in React, TypeScript, and Tailwind CSS."/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05060a;--bg2:#0a0d16;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.10);--text:#eef2ff;--muted:#9aa3b8;--a1:#7c5cff;--a2:#22d3ee;--a3:#ff5c8a;--glow:rgba(124,92,255,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden;cursor:none}
+@media(max-width:768px){body{cursor:auto}}
+::selection{background:var(--a1);color:#fff}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif}
+.mono{font-family:'JetBrains Mono',monospace}
+.bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(900px 600px at 15% 10%,rgba(124,92,255,.18),transparent 60%),radial-gradient(800px 600px at 85% 20%,rgba(34,211,238,.13),transparent 60%),radial-gradient(700px 500px at 50% 100%,rgba(255,92,138,.10),transparent 60%),var(--bg)}
+.grid{position:fixed;inset:0;z-index:-1;opacity:.35;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(circle at 50% 30%,black,transparent 75%)}
+#stars{position:fixed;inset:0;z-index:-1}
+.cursor,.dot{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference}
+.cursor{width:34px;height:34px;border:1px solid rgba(255,255,255,.75);transition:transform .12s ease,width .2s,height .2s,background .2s}
+.dot{width:6px;height:6px;background:#fff}
+.cursor.hover{width:58px;height:58px;background:rgba(255,255,255,.12)}
+@media(max-width:768px){.cursor,.dot{display:none}}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+section{padding:110px 0;position:relative}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--a2)}
+h2.title{font-size:clamp(32px,5vw,54px);line-height:1.05;margin:14px 0 18px}
+.sub{color:var(--muted);max-width:640px;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
+nav.scrolled{background:rgba(5,6,10,.72);border-color:var(--line)}
+.nav-inner{max-width:1160px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
+.logo{font-weight:700;letter-spacing:-.02em}
+.logo span{background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.links a{position:relative;transition:color .2s}
+.links a:hover{color:#fff}
+.links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:linear-gradient(90deg,var(--a1),var(--a2));transition:width .25s}
+.links a:hover::after{width:100%}
+@media(max-width:720px){.links{display:none}}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:120px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:50px}}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12px;color:var(--muted);background:var(--card)}
+.pulse{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+h1{font-size:clamp(44px,7.4vw,92px);line-height:.98;letter-spacing:-.035em;margin:22px 0}
+.grad{background:linear-gradient(92deg,var(--a1),var(--a2) 55%,var(--a3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.type{min-height:34px;color:var(--a2);font-size:clamp(16px,2.2vw,22px)}
+.hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:14px;overflow:hidden;border:1px solid var(--line);transition:.25s}
+.btn.primary{background:linear-gradient(90deg,var(--a1),#5b8cff);border-color:transparent;box-shadow:0 12px 40px var(--glow)}
+.btn.primary:hover{transform:translateY(-3px);box-shadow:0 18px 55px rgba(124,92,255,.5)}
+.btn.ghost:hover{border-color:var(--a2);color:#fff;transform:translateY(-3px)}
+.hero-card{position:relative;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));padding:26px;box-shadow:0 30px 80px rgba(0,0,0,.45);transform-style:preserve-3d;transition:transform .2s ease}
+.code{font-size:13px;line-height:1.8;color:#c9d1e4}
+.k{color:#ff7ab6}.s{color:#7ee7c7}.c{color:#6b7280}.p{color:#a5b4fc}
+.float{position:absolute;border-radius:50%;filter:blur(42px);opacity:.55;z-index:-1;animation:float 8s ease-in-out infinite}
+.f1{width:220px;height:220px;background:var(--a1);top:-60px;right:-50px}
+.f2{width:180px;height:180px;background:var(--a2);bottom:-50px;left:-40px;animation-delay:-3s}
+@keyframes float{50%{transform:translateY(-24px) scale(1.08)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.stat{border:1px solid var(--line);border-radius:16px;padding:14px;background:var(--card)}
+.stat b{display:block;font-size:24px;font-family:'Space Grotesk'}
+.stat span{font-size:11px;color:var(--muted)}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+@media(max-width:820px){.projects{grid-template-columns:1fr}}
+.project{position:relative;border:1px solid var(--line);border-radius:20px;padding:28px;background:var(--card);overflow:hidden;transition:.35s}
+.project:hover{transform:translateY(-8px);border-color:rgba(124,92,255,.55);box-shadow:0 25px 70px rgba(0,0,0,.45)}
+.project::before{content:"";position:absolute;inset:-2px;background:conic-gradient(from var(--ang,0deg),transparent 0 65%,var(--a1) 78%,var(--a2) 88%,transparent 100%);opacity:0;transition:opacity .3s;z-index:-1;filter:blur(16px)}
+.project:hover::before{opacity:.7;animation:spin 4s linear infinite}
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spin{to{--ang:360deg}}
+.project h3{font-size:22px;margin-bottom:8px}
+.project p{color:var(--muted);font-size:14.5px;line-height:1.65}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{font-size:11px;padding:6px 11px;border-radius:999px;border:1px solid var(--line);color:#cfd6e6;background:rgba(255,255,255,.03)}
+.award{display:inline-block;margin-top:16px;font-size:12px;color:#ffd479;border:1px solid rgba(255,212,121,.28);background:rgba(255,212,121,.08);padding:6px 11px;border-radius:999px}
+.link{margin-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--a2)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.skill-card{border:1px solid var(--line);border-radius:18px;padding:24px;background:var(--card);transition:.3s}
+.skill-card:hover{transform:translateY(-6px);border-color:var(--a2)}
+.skill-card h3{font-size:16px;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);transition:.2s}
+.chip:hover{background:linear-gradient(90deg,var(--a1),var(--a2));color:#04060c;border-color:transparent;transform:scale(1.06)}
+.timeline{position:relative;margin-top:40px;padding-left:28px}
+.timeline::before{content:"";position:absolute;left:6px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--a1),var(--a2),transparent)}
+.item{position:relative;margin-bottom:34px}
+.item::before{content:"";position:absolute;left:-27px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--a1);box-shadow:0 0 0 5px rgba(124,92,255,.15)}
+.item h3{font-size:18px}
+.item .meta{font-size:12px;color:var(--a2);margin:5px 0 8px}
+.item p{color:var(--muted);font-size:14.5px;line-height:1.65}
+.contact{text-align:center}
+.contact h2{font-size:clamp(38px,6.5vw,72px)}
+.contact-box{margin-top:34px;display:inline-block;border:1px solid var(--line);border-radius:22px;padding:34px 40px;background:var(--card);backdrop-filter:blur(10px)}
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center}
+#progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));z-index:1000}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="grid"></div><canvas id="stars"></canvas>
+<div class="cursor"></div><div class="dot"></div><div id="progress"></div>
+<nav id="nav"><div class="nav-inner">
+<a href="#home" class="logo">albin<span>.dev</span></a>
+<div class="links"><a href="#work">Work</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a href="#contact">Contact</a></div>
+<a class="btn ghost" href="mailto:albinbsebastian@gmail.com" style="padding:9px 16px">Hire me</a>
+</div></nav>
+<header class="hero" id="home"><div class="wrap hero-grid">
+<div>
+<div class="badge reveal"><span class="pulse"></span> Available for frontend opportunities</div>
+<h1 class="reveal">Hi, I’m <span class="grad">Albin Binu Sebastian</span>.</h1>
+<div class="type mono reveal"><span id="typed"></span><span style="opacity:.8">|</span></div>
+<p class="sub reveal" style="margin-top:22px">Frontend software engineer building fast, expressive interfaces with <b>React</b>, <b>TypeScript</b>, and <b>Tailwind CSS</b> — from Figma concepts to production-ready products.</p>
+<div class="hero-actions reveal">
+<a class="btn primary" href="#work">View my work →</a>
+<a class="btn ghost" href="https://github.com/albin-bs" target="_blank" rel="noopener">GitHub</a>
+<a class="btn ghost" href="https://linkedin.com/in/albin-binu-sebastian" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+</div>
+<div class="hero-card reveal" id="tilt">
+<div class="float f1"></div><div class="float f2"></div>
+<div class="mono code">
+<span class="c">// engineer.ts</span><br>
+<span class="k">const</span> <span class="p">albin</span> = {<br>
+&nbsp;&nbsp;role: <span class="s">"Frontend Engineer"</span>,<br>
+&nbsp;&nbsp;focus: [<span class="s">"React"</span>, <span class="s">"TypeScript"</span>, <span class="s">"UI/UX"</span>],<br>
+&nbsp;&nbsp;building: <span class="s">"AI-powered products"</span>,<br>
+&nbsp;&nbsp;ship: () => <span class="s">"clean, responsive, animated UI"</span><br>
+};
+</div>
+<div class="stats">
+<div class="stat"><b>4+</b><span>Major projects</span></div>
+<div class="stat"><b>2</b><span>Hackathon awards</span></div>
+<div class="stat"><b>2026</b><span>B.Tech CSE</span></div>
+</div>
+</div>
+</div></header>
+<section id="work"><div class="wrap">
+<div class="reveal"><div class="eyebrow">Selected work</div>
+<h2 class="title">Projects with real <span class="grad">impact</span></h2>
+<p class="sub">A mix of AI interfaces, audio tooling, robotics, and simulation — built end-to-end with attention to interaction and usability.</p></div>
+<div class="projects" style="margin-top:44px">
+<article class="project reveal">
+<h3>MockMate AI</h3><p>Engineered the frontend for a live AI-powered mock interview platform: question delivery, session state, and real-time personalised feedback through reusable responsive React + TypeScript components.</p>
+<div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span></div>
+<a class="link" href="https://mockmate.tech" target="_blank" rel="noopener">Visit mockmate.tech ↗</a>
+</article>
+<article class="project reveal">
+<h3>TrackTidy</h3><p>Designed a JUCE plugin UI for intelligent audio segmentation and classification, enabling real-time editing of grouped audio segments inside a DAW.</p>
+<div class="tags"><span class="tag">JUCE</span><span class="tag">C++</span><span class="tag">FL Studio</span></div>
+<span class="award">🏆 2nd Prize — HackS’US Edition V</span>
+</article>
+<article class="project reveal">
+<h3>AquaSweep</h3><p>Led development of an autonomous AI-powered water-filtration simulation to combat invasive water hyacinths, modelling navigation, obstacle avoidance, and collection in Python/Pygame.</p>
+<div class="tags"><span class="tag">Python</span><span class="tag">Pygame</span><span class="tag">TinkerCAD</span><span class="tag">Gazebo</span></div>
+<span class="award">🦈 Shark Tank Pitch Nominee — HackS’US Edition IV</span>
+</article>
+<article class="project reveal">
+<h3>Gulliver — Beach Cleanbot</h3><p>Co-developed embedded firmware for a four-wheel-drive beach-cleaning robot with Arduino Uno motor/servo control and an ESP32 wireless web-based joystick interface.</p>
+<div class="tags"><span class="tag">Arduino</span><span class="tag">ESP32</span><span class="tag">C/C++</span><span class="tag">Robotics</span></div>
+</article>
+</div>
+</div></section>
+<section id="skills"><div class="wrap">
+<div class="reveal"><div class="eyebrow">Toolkit</div>
+<h2 class="title">What I <span class="grad">build with</span></h2></div>
+<div class="skills" style="margin-top:40px">
+<div class="skill-card reveal"><h3>Languages</h3><div class="chips"><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Python</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">C++</span><span class="chip">SQL</span></div></div>
+<div class="skill-card reveal"><h3>Frontend</h3><div class="chips"><span class="chip">React.js</span><span class="chip">Tailwind CSS</span><span class="chip">HTML</span><span class="chip">UI/UX</span><span class="chip">Figma</span></div></div>
+<div class="skill-card reveal"><h3>Tools</h3><div class="chips"><span class="chip">Git / GitHub</span><span class="chip">VS Code</span><span class="chip">Google Colab</span><span class="chip">Kaggle</span></div></div>
+<div class="skill-card reveal"><h3>Concepts</h3><div class="chips"><span class="chip">DSA</span><span class="chip">OOP</span><span class="chip">REST APIs</span><span class="chip">Responsive Design</span></div></div>
+</div>
+</div></section>
+<section id="journey"><div class="wrap">
+<div class="reveal"><div class="eyebrow">Background</div>
+<h2 class="title">Education & <span class="grad">leadership</span></h2></div>
+<div class="timeline" style="margin-top:44px">
+<div class="item reveal"><h3>Rajagiri School of Engineering and Technology, Kochi</h3><div class="meta mono">2022 – 2026 · B.Tech, Computer Science & Engineering</div><p>CGPA: 6.6</p></div>
+<div class="item reveal"><h3>Cyberblitz Club — Representative</h3><div class="meta mono">Leadership</div><p>Designed the CSE department’s 2024 club magazine and coordinated workshops and club activities.</p></div>
+<div class="item reveal"><h3>RSET Astronomy Club — Design Team, Execom</h3><div class="meta mono">Design & Outreach</div><p>Created posters and digital content for astronomy events and outreach programs.</p></div>
+<div class="item reveal"><h3>RSET NSS Club — Volunteer</h3><div class="meta mono">2 years</div><p>Contributed to awareness campaigns, community outreach, and the annual NSS camp.</p></div>
+</div>
+</div></section>
+<section id="contact" class="contact"><div class="wrap">
+<div class="reveal"><div class="eyebrow">Let’s connect</div>
+<h2 class="title">Have an idea? <span class="grad">Let’s build it.</span></h2></div>
+<div class="contact-box reveal">
+<p class="sub" style="margin:0 auto 22px">Open to frontend engineering roles, freelance UI work, and ambitious product collaborations.</p>
+<div class="hero-actions" style="justify-content:center">
+<a class="btn primary" href="mailto:albinbsebastian@gmail.com">albinbsebastian@gmail.com</a>
+<a class="btn ghost" href="tel:+919400170747">+91 94001 70747</a>
+</div>
+</div>
+</div></section>
+<footer><div class="wrap">© <span id="year"></span> Albin Binu Sebastian · Built with React-inspired energy, vanilla JS, and too many animations.</div></footer>
+<script>
+const typedEl=document.getElementById('typed');
+const phrases=["Frontend Software Engineer","React & TypeScript Developer","UI/UX-Focused Builder","AI Product Interface Developer"];
+let pi=0,ci=0,del=false;
+(function type(){const p=phrases[pi];typedEl.textContent=p.slice(0,ci);
+if(!del&&ci<p.length){ci++;setTimeout(type,55)}else if(!del){del=true;setTimeout(type,1500)}
+else if(ci>0){ci--;setTimeout(type,28)}else{del=false;pi=(pi+1)%phrases.length;setTimeout(type,300)}})();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+const nav=document.getElementById('nav'),prog=document.getElementById('progress');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>20);prog.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%'});
+const cur=document.querySelector('.cursor'),dot=document.querySelector('.dot');
+let mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx-3}px,${my-3}px)`});
+(function loop(){cx+=(mx-cx)*.16;cy+=(my-cy)*.16;cur.style.transform=`translate(${cx-17}px,${cy-17}px)`;requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.project,.skill-card,.chip').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hover'));el.addEventListener('mouseleave',()=>cur.classList.remove('hover'))});
+const tilt=document.getElementById('tilt');
+tilt.addEventListener('mousemove',e=>{const r=tilt.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tilt.style.transform=`perspective(900px) rotateY(${x*10}deg) rotateX(${-y*10}deg)`});
+tilt.addEventListener('mouseleave',()=>tilt.style.transform='perspective(900px)');
+const c=document.getElementById('stars'),ctx=c.getContext('2d');let stars=[];
+function resize(){c.width=innerWidth;c.height=innerHeight;stars=Array.from({length:Math.min(130,innerWidth/10)},()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.5+.3,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22}))}
+resize();addEventListener('resize',resize);
+(function draw(){ctx.clearRect(0,0,c.width,c.height);stars.forEach(s=>{s.x+=s.vx;s.y+=s.vy;if(s.x<0||s.x>c.width)s.vx*=-1;if(s.y<0||s.y>c.height)s.vy*=-1;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,7);ctx.fillStyle='rgba(255,255,255,.55)';ctx.fill()});requestAnimationFrame(draw)})();
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
